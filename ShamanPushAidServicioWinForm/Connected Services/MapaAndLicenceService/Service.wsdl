@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetDistanciaTiempo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="latMov" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lngMov" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="latDst" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lngDst" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDistanciaTiempoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDistanciaTiempoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDireccion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lat" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lng" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDireccionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDireccionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLatLong">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLatLongResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLatLongResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPuntosEnPoligono">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pLat" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="pLon" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPuntosEnPoligonoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPuntosEnPoligonoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getIncidente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cod" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fec" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getIncidenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getIncidenteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSerialSetLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serialNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSerialSetLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSerialSetLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSerialSetLogLast">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serialNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pRemote" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSerialSetLogLastResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSerialSetLogLastResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isInGestion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="llave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isInGestionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="isInGestionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setPushNotification">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="license" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setPushNotificationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setPushNotificationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLicenseInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serialNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLicenseInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLicenseInfoResult" type="tns:ArrayOfLicenseInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLicenseInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LicenseInfo" nillable="true" type="tns:LicenseInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LicenseInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Numero" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Jerarquia" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Vencimiento" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Observaciones" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VencimientoLicencia" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="VencimientoSoporte" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="ArrayOfLicenseInfo" nillable="true" type="tns:ArrayOfLicenseInfo" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDistanciaTiempoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDistanciaTiempo" />
+  </wsdl:message>
+  <wsdl:message name="GetDistanciaTiempoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDistanciaTiempoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDireccionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDireccion" />
+  </wsdl:message>
+  <wsdl:message name="GetDireccionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDireccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLatLongSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLatLong" />
+  </wsdl:message>
+  <wsdl:message name="GetLatLongSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLatLongResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPuntosEnPoligonoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPuntosEnPoligono" />
+  </wsdl:message>
+  <wsdl:message name="GetPuntosEnPoligonoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPuntosEnPoligonoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getIncidenteSoapIn">
+    <wsdl:part name="parameters" element="tns:getIncidente" />
+  </wsdl:message>
+  <wsdl:message name="getIncidenteSoapOut">
+    <wsdl:part name="parameters" element="tns:getIncidenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSerialSetLogSoapIn">
+    <wsdl:part name="parameters" element="tns:getSerialSetLog" />
+  </wsdl:message>
+  <wsdl:message name="getSerialSetLogSoapOut">
+    <wsdl:part name="parameters" element="tns:getSerialSetLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSerialSetLogLastSoapIn">
+    <wsdl:part name="parameters" element="tns:getSerialSetLogLast" />
+  </wsdl:message>
+  <wsdl:message name="getSerialSetLogLastSoapOut">
+    <wsdl:part name="parameters" element="tns:getSerialSetLogLastResponse" />
+  </wsdl:message>
+  <wsdl:message name="isInGestionSoapIn">
+    <wsdl:part name="parameters" element="tns:isInGestion" />
+  </wsdl:message>
+  <wsdl:message name="isInGestionSoapOut">
+    <wsdl:part name="parameters" element="tns:isInGestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="setPushNotificationSoapIn">
+    <wsdl:part name="parameters" element="tns:setPushNotification" />
+  </wsdl:message>
+  <wsdl:message name="setPushNotificationSoapOut">
+    <wsdl:part name="parameters" element="tns:setPushNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLicenseInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getLicenseInfo" />
+  </wsdl:message>
+  <wsdl:message name="getLicenseInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getLicenseInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDistanciaTiempoHttpGetIn">
+    <wsdl:part name="latMov" type="s:string" />
+    <wsdl:part name="lngMov" type="s:string" />
+    <wsdl:part name="latDst" type="s:string" />
+    <wsdl:part name="lngDst" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDistanciaTiempoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDireccionHttpGetIn">
+    <wsdl:part name="lat" type="s:string" />
+    <wsdl:part name="lng" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDireccionHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLatLongHttpGetIn">
+    <wsdl:part name="direccion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLatLongHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPuntosEnPoligonoHttpGetIn">
+    <wsdl:part name="pLat" type="s:string" />
+    <wsdl:part name="pLon" type="s:string" />
+    <wsdl:part name="pTip" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPuntosEnPoligonoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getIncidenteHttpGetIn">
+    <wsdl:part name="cod" type="s:string" />
+    <wsdl:part name="fec" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getIncidenteHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getSerialSetLogHttpGetIn">
+    <wsdl:part name="serialNumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSerialSetLogHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getSerialSetLogLastHttpGetIn">
+    <wsdl:part name="serialNumber" type="s:string" />
+    <wsdl:part name="pRemote" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSerialSetLogLastHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="isInGestionHttpGetIn">
+    <wsdl:part name="user" type="s:string" />
+    <wsdl:part name="pass" type="s:string" />
+    <wsdl:part name="llave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isInGestionHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="setPushNotificationHttpGetIn">
+    <wsdl:part name="license" type="s:string" />
+    <wsdl:part name="mobile" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="setPushNotificationHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getLicenseInfoHttpGetIn">
+    <wsdl:part name="serialNumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getLicenseInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLicenseInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetDistanciaTiempoHttpPostIn">
+    <wsdl:part name="latMov" type="s:string" />
+    <wsdl:part name="lngMov" type="s:string" />
+    <wsdl:part name="latDst" type="s:string" />
+    <wsdl:part name="lngDst" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDistanciaTiempoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDireccionHttpPostIn">
+    <wsdl:part name="lat" type="s:string" />
+    <wsdl:part name="lng" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDireccionHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLatLongHttpPostIn">
+    <wsdl:part name="direccion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLatLongHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPuntosEnPoligonoHttpPostIn">
+    <wsdl:part name="pLat" type="s:string" />
+    <wsdl:part name="pLon" type="s:string" />
+    <wsdl:part name="pTip" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPuntosEnPoligonoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getIncidenteHttpPostIn">
+    <wsdl:part name="cod" type="s:string" />
+    <wsdl:part name="fec" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getIncidenteHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getSerialSetLogHttpPostIn">
+    <wsdl:part name="serialNumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSerialSetLogHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getSerialSetLogLastHttpPostIn">
+    <wsdl:part name="serialNumber" type="s:string" />
+    <wsdl:part name="pRemote" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSerialSetLogLastHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="isInGestionHttpPostIn">
+    <wsdl:part name="user" type="s:string" />
+    <wsdl:part name="pass" type="s:string" />
+    <wsdl:part name="llave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isInGestionHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="setPushNotificationHttpPostIn">
+    <wsdl:part name="license" type="s:string" />
+    <wsdl:part name="mobile" type="s:string" />
+    <wsdl:part name="message" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="setPushNotificationHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getLicenseInfoHttpPostIn">
+    <wsdl:part name="serialNumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getLicenseInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfLicenseInfo" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="GetDistanciaTiempo">
+      <wsdl:input message="tns:GetDistanciaTiempoSoapIn" />
+      <wsdl:output message="tns:GetDistanciaTiempoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDireccion">
+      <wsdl:input message="tns:GetDireccionSoapIn" />
+      <wsdl:output message="tns:GetDireccionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatLong">
+      <wsdl:input message="tns:GetLatLongSoapIn" />
+      <wsdl:output message="tns:GetLatLongSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPuntosEnPoligono">
+      <wsdl:input message="tns:GetPuntosEnPoligonoSoapIn" />
+      <wsdl:output message="tns:GetPuntosEnPoligonoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getIncidente">
+      <wsdl:input message="tns:getIncidenteSoapIn" />
+      <wsdl:output message="tns:getIncidenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLog">
+      <wsdl:input message="tns:getSerialSetLogSoapIn" />
+      <wsdl:output message="tns:getSerialSetLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLogLast">
+      <wsdl:input message="tns:getSerialSetLogLastSoapIn" />
+      <wsdl:output message="tns:getSerialSetLogLastSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isInGestion">
+      <wsdl:input message="tns:isInGestionSoapIn" />
+      <wsdl:output message="tns:isInGestionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setPushNotification">
+      <wsdl:input message="tns:setPushNotificationSoapIn" />
+      <wsdl:output message="tns:setPushNotificationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLicenseInfo">
+      <wsdl:input message="tns:getLicenseInfoSoapIn" />
+      <wsdl:output message="tns:getLicenseInfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpGet">
+    <wsdl:operation name="GetDistanciaTiempo">
+      <wsdl:input message="tns:GetDistanciaTiempoHttpGetIn" />
+      <wsdl:output message="tns:GetDistanciaTiempoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDireccion">
+      <wsdl:input message="tns:GetDireccionHttpGetIn" />
+      <wsdl:output message="tns:GetDireccionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatLong">
+      <wsdl:input message="tns:GetLatLongHttpGetIn" />
+      <wsdl:output message="tns:GetLatLongHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPuntosEnPoligono">
+      <wsdl:input message="tns:GetPuntosEnPoligonoHttpGetIn" />
+      <wsdl:output message="tns:GetPuntosEnPoligonoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getIncidente">
+      <wsdl:input message="tns:getIncidenteHttpGetIn" />
+      <wsdl:output message="tns:getIncidenteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLog">
+      <wsdl:input message="tns:getSerialSetLogHttpGetIn" />
+      <wsdl:output message="tns:getSerialSetLogHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLogLast">
+      <wsdl:input message="tns:getSerialSetLogLastHttpGetIn" />
+      <wsdl:output message="tns:getSerialSetLogLastHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isInGestion">
+      <wsdl:input message="tns:isInGestionHttpGetIn" />
+      <wsdl:output message="tns:isInGestionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setPushNotification">
+      <wsdl:input message="tns:setPushNotificationHttpGetIn" />
+      <wsdl:output message="tns:setPushNotificationHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLicenseInfo">
+      <wsdl:input message="tns:getLicenseInfoHttpGetIn" />
+      <wsdl:output message="tns:getLicenseInfoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpPost">
+    <wsdl:operation name="GetDistanciaTiempo">
+      <wsdl:input message="tns:GetDistanciaTiempoHttpPostIn" />
+      <wsdl:output message="tns:GetDistanciaTiempoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDireccion">
+      <wsdl:input message="tns:GetDireccionHttpPostIn" />
+      <wsdl:output message="tns:GetDireccionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatLong">
+      <wsdl:input message="tns:GetLatLongHttpPostIn" />
+      <wsdl:output message="tns:GetLatLongHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPuntosEnPoligono">
+      <wsdl:input message="tns:GetPuntosEnPoligonoHttpPostIn" />
+      <wsdl:output message="tns:GetPuntosEnPoligonoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getIncidente">
+      <wsdl:input message="tns:getIncidenteHttpPostIn" />
+      <wsdl:output message="tns:getIncidenteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLog">
+      <wsdl:input message="tns:getSerialSetLogHttpPostIn" />
+      <wsdl:output message="tns:getSerialSetLogHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLogLast">
+      <wsdl:input message="tns:getSerialSetLogLastHttpPostIn" />
+      <wsdl:output message="tns:getSerialSetLogLastHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isInGestion">
+      <wsdl:input message="tns:isInGestionHttpPostIn" />
+      <wsdl:output message="tns:isInGestionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setPushNotification">
+      <wsdl:input message="tns:setPushNotificationHttpPostIn" />
+      <wsdl:output message="tns:setPushNotificationHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLicenseInfo">
+      <wsdl:input message="tns:getLicenseInfoHttpPostIn" />
+      <wsdl:output message="tns:getLicenseInfoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDistanciaTiempo">
+      <soap:operation soapAction="http://tempuri.org/GetDistanciaTiempo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDireccion">
+      <soap:operation soapAction="http://tempuri.org/GetDireccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatLong">
+      <soap:operation soapAction="http://tempuri.org/GetLatLong" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPuntosEnPoligono">
+      <soap:operation soapAction="http://tempuri.org/GetPuntosEnPoligono" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIncidente">
+      <soap:operation soapAction="http://tempuri.org/getIncidente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLog">
+      <soap:operation soapAction="http://tempuri.org/getSerialSetLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLogLast">
+      <soap:operation soapAction="http://tempuri.org/getSerialSetLogLast" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isInGestion">
+      <soap:operation soapAction="http://tempuri.org/isInGestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setPushNotification">
+      <soap:operation soapAction="http://tempuri.org/setPushNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLicenseInfo">
+      <soap:operation soapAction="http://tempuri.org/getLicenseInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDistanciaTiempo">
+      <soap12:operation soapAction="http://tempuri.org/GetDistanciaTiempo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDireccion">
+      <soap12:operation soapAction="http://tempuri.org/GetDireccion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatLong">
+      <soap12:operation soapAction="http://tempuri.org/GetLatLong" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPuntosEnPoligono">
+      <soap12:operation soapAction="http://tempuri.org/GetPuntosEnPoligono" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIncidente">
+      <soap12:operation soapAction="http://tempuri.org/getIncidente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLog">
+      <soap12:operation soapAction="http://tempuri.org/getSerialSetLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLogLast">
+      <soap12:operation soapAction="http://tempuri.org/getSerialSetLogLast" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isInGestion">
+      <soap12:operation soapAction="http://tempuri.org/isInGestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setPushNotification">
+      <soap12:operation soapAction="http://tempuri.org/setPushNotification" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLicenseInfo">
+      <soap12:operation soapAction="http://tempuri.org/getLicenseInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpGet" type="tns:ServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetDistanciaTiempo">
+      <http:operation location="/GetDistanciaTiempo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDireccion">
+      <http:operation location="/GetDireccion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatLong">
+      <http:operation location="/GetLatLong" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPuntosEnPoligono">
+      <http:operation location="/GetPuntosEnPoligono" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIncidente">
+      <http:operation location="/getIncidente" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLog">
+      <http:operation location="/getSerialSetLog" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLogLast">
+      <http:operation location="/getSerialSetLogLast" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isInGestion">
+      <http:operation location="/isInGestion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setPushNotification">
+      <http:operation location="/setPushNotification" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLicenseInfo">
+      <http:operation location="/getLicenseInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpPost" type="tns:ServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetDistanciaTiempo">
+      <http:operation location="/GetDistanciaTiempo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDireccion">
+      <http:operation location="/GetDireccion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatLong">
+      <http:operation location="/GetLatLong" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPuntosEnPoligono">
+      <http:operation location="/GetPuntosEnPoligono" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIncidente">
+      <http:operation location="/getIncidente" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLog">
+      <http:operation location="/getSerialSetLog" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSerialSetLogLast">
+      <http:operation location="/getSerialSetLogLast" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isInGestion">
+      <http:operation location="/isInGestion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setPushNotification">
+      <http:operation location="/setPushNotification" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLicenseInfo">
+      <http:operation location="/getLicenseInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://200.49.156.125:57779/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://200.49.156.125:57779/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpGet" binding="tns:ServiceHttpGet">
+      <http:address location="http://200.49.156.125:57779/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpPost" binding="tns:ServiceHttpPost">
+      <http:address location="http://200.49.156.125:57779/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
