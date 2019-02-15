@@ -99,11 +99,12 @@ namespace ShamanPushAidServicio
         {
             try
             {
-                InterClientesC.AIDServicios objServicios = new InterClientesC.AIDServicios();
+                ConnectionStringCache connectionString = new ConnectionStringCache(ConfigurationManager.AppSettings["ConexionCache"]);
+                InterClientesC.AIDServicios objServicios = new InterClientesC.AIDServicios(connectionString);
 
                 List<MensajesPendientes> mensajes = objServicios.GetMensajesPendientes<MensajesPendientes>();
                 SendMethods jsonSend = new SendMethods();
-                if (mensajes.Count > 0)
+                if (mensajes != null && mensajes.Count > 0)
                 {
                     addLog(true, "PushAidPreIncidente: ", string.Format("Se encontraron {0} mensajes nuevos para enviar.", mensajes.Count));
                     foreach (var mensaje in mensajes)
