@@ -91,10 +91,10 @@ namespace ShamanPushAidServicioWinForm
                         bool result = false;
                         //TODO: Eliminar
                         //mensaje.PreIncidenteId = 16;
-                        mensaje.movLatitud = "-34.4381152";
-                        mensaje.movLongitud = "-58.8057913";
-                        mensaje.domLatitud = "-34.8008554";
-                        mensaje.domLongitud = "-58.447388";
+                        //mensaje.movLatitud = "-34.4381152";
+                        //mensaje.movLongitud = "-58.8057913";
+                        //mensaje.domLatitud = "-34.8008554";
+                        //mensaje.domLongitud = "-58.447388";
 
                         switch (Convert.ToInt32(mensaje.MensajeId))
                         {
