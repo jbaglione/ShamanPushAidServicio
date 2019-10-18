@@ -20,6 +20,7 @@ namespace ShamanPushAidServicio
 {
     public partial class Service1 : ServiceBase
     {
+        #region Service
         Timer t = new Timer();
         public Service1()
         {
@@ -57,6 +58,7 @@ namespace ShamanPushAidServicio
             this.PushAidPreIncidente();
             //}
         }
+        #endregion
 
         private void addLog(bool rdo, string logProcedure, string logDescription)
         {
@@ -148,7 +150,13 @@ namespace ShamanPushAidServicio
                                     });
                                 break;
                             case (int)TipoMensaje.PushText:
-                                result = jsonSend.PushText(new PushText());
+                                result = jsonSend.PushText(
+                                    new PushText
+                                    {
+                                        shamanUserId = 0,
+                                        messageHeader = "Móvil Arribado",
+                                        messageText = mensaje.Mensaje
+                                    });
                                 break;
                             default:
                                 break;

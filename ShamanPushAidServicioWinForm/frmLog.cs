@@ -80,7 +80,7 @@ namespace ShamanPushAidServicioWinForm
             {
                 ConnectionStringCache connectionString = new ConnectionStringCache(ConfigurationManager.AppSettings["ConexionCache"]);
                 InterClientesC.AIDServicios objServicios = new InterClientesC.AIDServicios(connectionString);
-                
+
                 List<MensajesPendientes> mensajes = objServicios.GetMensajesPendientes<MensajesPendientes>();
                 SendMethods jsonSend = new SendMethods();
                 if (mensajes != null && mensajes.Count > 0)
@@ -89,7 +89,7 @@ namespace ShamanPushAidServicioWinForm
                     foreach (var mensaje in mensajes)
                     {
                         bool result = false;
-                        //TODO: Eliminar
+                        ////TODO: Eliminar
                         //mensaje.PreIncidenteId = 16;
                         //mensaje.movLatitud = "-34.4381152";
                         //mensaje.movLongitud = "-58.8057913";
@@ -127,12 +127,18 @@ namespace ShamanPushAidServicioWinForm
                                     });
                                 break;
                             case (int)TipoMensaje.PushText:
-                                result = jsonSend.PushText(new PushText());
+                                result = jsonSend.PushText(
+                                    new PushText
+                                    {
+                                        shamanUserId = 0,
+                                        messageHeader = "Móvil Arribado",
+                                        messageText = mensaje.Mensaje
+                                    });
                                 break;
                             default:
                                 break;
                         }
-                        if(result)
+                        if (result)
                             objServicios.SetPreIncidenteMensaje(mensaje.PreIncidenteId, mensaje.MensajeId);
                     }
                 }
@@ -159,14 +165,14 @@ namespace ShamanPushAidServicioWinForm
                 string[] vTpoExp = vDisTpo.Split('/')[1].Split(' ');
 
                 if (vTpoExp.Length > 1)
-                if (vTpoExp[1].Substring(0, 1).ToLower() == "h")
-                {
-                    vTpo = double.Parse(vTpoExp[0]).ToString("00:");
-                    if (vTpoExp.Length > 2)
-                        vTpo = vTpo + double.Parse(vTpoExp[2]).ToString("00");
-                }
-                else
-                    vTpo = "00:" + double.Parse(vTpoExp[0]).ToString("00");
+                    if (vTpoExp[1].Substring(0, 1).ToLower() == "h")
+                    {
+                        vTpo = double.Parse(vTpoExp[0]).ToString("00:");
+                        if (vTpoExp.Length > 2)
+                            vTpo = vTpo + double.Parse(vTpoExp[2]).ToString("00");
+                    }
+                    else
+                        vTpo = "00:" + double.Parse(vTpoExp[0]).ToString("00");
 
                 return vTpo;
             }
