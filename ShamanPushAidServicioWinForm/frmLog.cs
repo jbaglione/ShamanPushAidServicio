@@ -9,6 +9,7 @@ using System.Net.Mail;
 using System.Net.Mime;
 using JsonRequest.Methods;
 using ShamanPushAidServicioWinForm.MapaAndLicenceService;
+using System.Data.SqlClient;
 
 namespace ShamanPushAidServicioWinForm
 {
@@ -82,6 +83,14 @@ namespace ShamanPushAidServicioWinForm
                 InterClientesC.AIDServicios objServicios = new InterClientesC.AIDServicios(connectionString);
 
                 List<MensajesPendientes> mensajes = objServicios.GetMensajesPendientes<MensajesPendientes>();
+                //mensajes = new List<MensajesPendientes>();
+                //mensajes.Add(new MensajesPendientes
+                //{
+                //    PreIncidenteId = "346046",
+                //    MensajeId = "10",
+                //    Mensaje = "No hay Novedad"
+                //});
+
                 SendMethods jsonSend = new SendMethods();
                 if (mensajes != null && mensajes.Count > 0)
                 {
@@ -126,13 +135,12 @@ namespace ShamanPushAidServicioWinForm
                                         treatment = mensaje.treatment
                                     });
                                 break;
-                            case (int)TipoMensaje.PushText:
-                                result = jsonSend.PushText(
-                                    new PushText
+                            case (int)TipoMensaje.ArriveOrder:
+                                result = jsonSend.ArriveOrder(
+                                    new ArriveOrder
                                     {
-                                        shamanUserId = 0,
-                                        messageHeader = "Móvil Arribado",
-                                        messageText = mensaje.Mensaje
+                                        preIncidentId = mensaje.PreIncidenteId,
+                                        message = "El movil ya se encuentra en su domicilio"
                                     });
                                 break;
                             default:
@@ -149,6 +157,35 @@ namespace ShamanPushAidServicioWinForm
             {
                 addLog(false, "PushAidPreIncidente", "Fallo PushAidPreIncidente. " + ex.Message);
             }
+        }
+
+        private int GetShamanUserIdByIncidente(int preIncidenteId)
+        {
+            try
+            {
+                int userId = 0;
+                string queryString = "SELECT ord.UserId " +
+                                        "FROM Orders ord " +
+                                        "INNER JOIN UsersCompanies usr ON ord.UserId = usr.UserId " +
+                                        "INNER JOIN Companies cmp ON usr.CompanyId = cmp.CompanyId " +
+                                        "WHERE cmp.Serial = " + ConfigurationManager.AppSettings["Serial"] +
+                                        " AND ord.ShamanPreIncidenteId = " + preIncidenteId;
+                string connectionString = ConfigurationManager.AppSettings["ConexionGestion"];
+                
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand(queryString, connection);
+                    command.Connection.Open();
+                    var res = command.ExecuteScalar();
+                    userId = Convert.ToInt32(res);
+                }
+                return userId;
+            }
+            catch (Exception ex)
+            {
+                addLog(false, "PushAidPreIncidente", "Fallo PushAidPreIncidente. " + ex.Message);
+            }
+            return 0;
         }
 
         private string GetEstimatedTime(MensajesPendientes mensaje)
@@ -185,7 +222,7 @@ namespace ShamanPushAidServicioWinForm
 
         enum TipoMensaje
         {
-            Aceptacion = 1, Cancelado, MovilAsignado, Finalizado, PushText = 10
+            Aceptacion = 1, Cancelado, MovilAsignado, Finalizado, ArriveOrder = 10
         }
         #endregion
     }
