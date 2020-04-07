@@ -244,7 +244,7 @@ namespace ShamanPushAidServicio
 
         enum TipoMensaje
         {
-            Aceptacion = 1, Cancelado, MovilAsignado, Finalizado, ArriveOrder = 10
+            Aceptacion = 1, Cancelado, MovilAsignado, Finalizado, ArriveOrder = 9
         }
         #endregion
     }

@@ -101,13 +101,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ConsumeApi\JsonRequest.Methods\JsonRequest.Methods.csproj">
-      <Project>{B780A219-0273-4B80-ACEE-AC4603EB2680}</Project>
+    <ProjectReference Include="..\..\ComsumeApi\JsonRequest.Methods\JsonRequest.Methods.csproj">
+      <Project>{b780a219-0273-4b80-acee-ac4603eb2680}</Project>
       <Name>JsonRequest.Methods</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ShamanClases\ShamanClases\ShamanClases.vbproj">
-      <Project>{c67374e5-c7fb-43bb-a9b4-436cbc2e7524}</Project>
-      <Name>ShamanClases</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ShamanClases\ShamanClases_CSharp\ShamanClases_CSharp.csproj">
       <Project>{e9dec2d3-6082-454d-8f3d-d2456286371d}</Project>
